@@ -27,7 +27,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var value = _AboutService.TGetById(id);
@@ -62,7 +62,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("Hakkında bilgisi başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var value = _AboutService.TGetById(id);
