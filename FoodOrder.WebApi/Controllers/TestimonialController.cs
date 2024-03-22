@@ -25,7 +25,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetTestimonial")]
+        [HttpGet("{id}")]
         public IActionResult GetTestimonial(int id)
         {
             var value = _TestimonialService.TGetById(id);
@@ -64,7 +64,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("Müşteri yorum bilgisi başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteTestimonial(int id)
         {
             var value = _TestimonialService.TGetById(id);

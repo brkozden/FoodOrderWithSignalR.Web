@@ -1,8 +1,7 @@
-﻿namespace FoodOrder.Dto.TestimonialDto
+﻿namespace FoodOrder.WebUI.Dtos.TestimonialDtos
 {
-    public class ResultTestimonialDto
+    public class CreateTestimonialDto
     {
-        public int TestimonialId { get; set; }
 
         public string Name { get; set; }
 

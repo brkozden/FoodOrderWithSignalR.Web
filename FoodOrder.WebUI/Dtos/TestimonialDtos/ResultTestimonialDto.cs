@@ -1,4 +1,4 @@
-﻿namespace FoodOrder.Dto.TestimonialDto
+﻿namespace FoodOrder.WebUI.Dtos.TestimonialDtos
 {
     public class ResultTestimonialDto
     {
