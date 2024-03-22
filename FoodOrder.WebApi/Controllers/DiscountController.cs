@@ -26,7 +26,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetDiscount")]
+        [HttpGet("{id}")]
         public IActionResult GetDiscount(int id)
         {
             var value = _DiscountService.TGetById(id);
@@ -62,7 +62,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("İndirim başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDiscount(int id)
         {
             var value = _DiscountService.TGetById(id);
