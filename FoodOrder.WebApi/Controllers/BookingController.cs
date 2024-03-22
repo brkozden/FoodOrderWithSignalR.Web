@@ -26,7 +26,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetBooking")]
+        [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
             var value = _BookingService.TGetById(id);
@@ -64,7 +64,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("Kategori başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
             var value = _BookingService.TGetById(id);
