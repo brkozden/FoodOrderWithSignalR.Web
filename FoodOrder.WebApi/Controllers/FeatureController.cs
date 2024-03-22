@@ -26,7 +26,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetFeature")]
+        [HttpGet("{id}")]
         public IActionResult GetFeature(int id)
         {
             var value = _FeatureService.TGetById(id);
@@ -66,7 +66,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("Özellik başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteFeature(int id)
         {
             var value = _FeatureService.TGetById(id);
