@@ -2,7 +2,6 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.CategoryDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers
@@ -26,7 +25,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetCategory")]
+        [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
             var value = _CategoryService.TGetById(id);
@@ -40,7 +39,7 @@ namespace FoodOrder.WebApi.Controllers
             _CategoryService.TAdd(new Category
             {
                 CategoryName = createCategoryDto.CategoryName,
-                Status = true,
+                Status = createCategoryDto.Status,
             });
             return Ok("Kategori başarılı bir şekilde eklendi.");
 
@@ -58,7 +57,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("Kategori başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id)
         {
             var value = _CategoryService.TGetById(id);
