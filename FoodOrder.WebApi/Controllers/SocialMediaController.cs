@@ -26,7 +26,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetSocialMedia")]
+        [HttpGet("{id}")]
         public IActionResult GetSocialMedia(int id)
         {
             var value = _SocialMediaService.TGetById(id);
@@ -53,14 +53,14 @@ namespace FoodOrder.WebApi.Controllers
             _SocialMediaService.TUpdate(new SocialMedia
             {
                 SocialMediaId = updateSocialMediaDto.SocialMediaId,
-               Title = updateSocialMediaDto.Title,
-               Url = updateSocialMediaDto.Url,
-               Icon = updateSocialMediaDto.Icon
+                Title = updateSocialMediaDto.Title,
+                Url = updateSocialMediaDto.Url,
+                Icon = updateSocialMediaDto.Icon
             });
             return Ok("Sosyal Medya bilgisi başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteSocialMedia(int id)
         {
             var value = _SocialMediaService.TGetById(id);
