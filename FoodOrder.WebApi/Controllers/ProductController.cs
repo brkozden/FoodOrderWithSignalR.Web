@@ -3,13 +3,12 @@ using FoodOrder.Business.Abstrack;
 using FoodOrder.DataAccess.Concrete;
 using FoodOrder.Dto.ProductDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+	[Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -28,7 +27,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _ProductService.TGetById(id);
@@ -63,7 +62,8 @@ namespace FoodOrder.WebApi.Controllers
                 Status = createProductDto.Status,
                 ImageUrl = createProductDto.ImageUrl,
                 Description = createProductDto.Description,
-                Price = createProductDto.Price
+                Price = createProductDto.Price,
+                CategoryId = createProductDto.CategoryId,
             });
             return Ok("Ürün başarılı bir şekilde eklendi.");
 
@@ -79,12 +79,13 @@ namespace FoodOrder.WebApi.Controllers
                 Status = updateProductDto.Status,
                 ImageUrl = updateProductDto.ImageUrl,
                 Description = updateProductDto.Description,
-                Price = updateProductDto.Price
+                Price = updateProductDto.Price,
+                CategoryId= updateProductDto.CategoryId,
             });
             return Ok("Ürün başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _ProductService.TGetById(id);

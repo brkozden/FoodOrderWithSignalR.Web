@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.BookingDto;
-using FoodOrder.Dto.BookingDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers

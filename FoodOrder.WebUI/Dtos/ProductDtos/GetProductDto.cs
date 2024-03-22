@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FoodOrder.Dto.ProductDto
+﻿namespace FoodOrder.WebUI.Dtos.ProductDtos
 {
-    public class ResultProductDto
+    public class GetProductDto
     {
         public int ProductId { get; set; }
 
@@ -19,7 +13,7 @@ namespace FoodOrder.Dto.ProductDto
         public string ImageUrl { get; set; }
 
         public bool Status { get; set; }
-        public int CategoryId { get; set; }
 
+        public int CategoryId { get; set; }
     }
 }
