@@ -26,7 +26,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok(values);
 
         }
-        [HttpGet("GetContact")]
+        [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
             var value = _ContactService.TGetById(id);
@@ -62,7 +62,7 @@ namespace FoodOrder.WebApi.Controllers
             return Ok("İletişim bilgisi başarılı bir şekilde güncellendi.");
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteContact(int id)
         {
             var value = _ContactService.TGetById(id);
