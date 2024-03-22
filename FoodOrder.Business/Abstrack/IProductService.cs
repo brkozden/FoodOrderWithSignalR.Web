@@ -9,5 +9,7 @@ namespace FoodOrder.Business.Abstrack
 {
     public interface IProductService:IGenericService<Product>
     {
+        List<Product> TGetProductsWithCategories();
+
     }
 }

@@ -9,5 +9,6 @@ namespace FoodOrder.DataAccess.Abstrack
 {
     public interface IProductDal:IGenericDal<Product>
     {
+        List<Product> GetProductsWithCategories();
     }
 }

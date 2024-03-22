@@ -2,7 +2,6 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.TestimonialDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers

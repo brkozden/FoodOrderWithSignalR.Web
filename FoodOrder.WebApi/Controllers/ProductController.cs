@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using FoodOrder.Business.Abstrack;
+using FoodOrder.DataAccess.Concrete;
 using FoodOrder.Dto.ProductDto;
 using FoodOrder.EntityLayer.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.WebApi.Controllers
 {
@@ -31,6 +33,24 @@ namespace FoodOrder.WebApi.Controllers
         {
             var value = _ProductService.TGetById(id);
             return Ok(value);
+
+        }
+        [HttpGet("GetProductsWithCategory")]
+        public IActionResult GetProductsWithCategory()
+        {
+            var context = new FoodOrderContext();
+            var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategoryDto
+            {
+                ProductId = y.ProductId,
+                ProductName = y.ProductName,
+                ImageUrl = y.ImageUrl,
+                Price = y.Price,
+                Status = y.Status,
+                Description = y.Description,
+                CategoryName = y.Category.CategoryName,
+
+            }).ToList();
+            return Ok(values);
 
         }
         [HttpPost]

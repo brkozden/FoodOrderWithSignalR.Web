@@ -2,6 +2,7 @@
 using FoodOrder.DataAccess.Concrete;
 using FoodOrder.DataAccess.Repositories;
 using FoodOrder.EntityLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,12 @@ namespace FoodOrder.DataAccess.EntityFramework
     {
         public EfProductDal(FoodOrderContext context) : base(context)
         {
+        }
+
+        public List<Product> GetProductsWithCategories()
+        {
+            var context = new FoodOrderContext();
+            return context.Products.Include(x=>x.Category).ToList();
         }
     }
 }
