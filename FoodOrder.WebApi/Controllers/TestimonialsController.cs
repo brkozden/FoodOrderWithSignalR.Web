@@ -8,12 +8,12 @@ namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestimonialController : ControllerBase
+    public class TestimonialsController : ControllerBase
     {
         private readonly ITestimonialService _TestimonialService;
         private readonly IMapper _mapper;
 
-        public TestimonialController(ITestimonialService TestimonialService, IMapper mapper)
+        public TestimonialsController(ITestimonialService TestimonialService, IMapper mapper)
         {
             _TestimonialService = TestimonialService;
             _mapper = mapper;

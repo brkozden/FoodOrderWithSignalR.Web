@@ -2,19 +2,18 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.DiscountDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DiscountController : ControllerBase
+    public class DiscountsController : ControllerBase
     {
         private readonly IDiscountService _DiscountService;
         private readonly IMapper _mapper;
 
-        public DiscountController(IDiscountService DiscountService, IMapper mapper)
+        public DiscountsController(IDiscountService DiscountService, IMapper mapper)
         {
             _DiscountService = DiscountService;
             _mapper = mapper;

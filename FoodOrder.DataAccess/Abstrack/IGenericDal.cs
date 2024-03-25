@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FoodOrder.DataAccess.Abstrack
+﻿namespace FoodOrder.DataAccess.Abstrack
 {
     public interface IGenericDal<T> where T : class
     {

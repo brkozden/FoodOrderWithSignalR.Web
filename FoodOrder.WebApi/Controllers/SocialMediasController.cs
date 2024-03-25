@@ -2,19 +2,18 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.SocialMediaDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SocialMediaController : ControllerBase
+    public class SocialMediasController : ControllerBase
     {
         private readonly ISocialMediaService _SocialMediaService;
         private readonly IMapper _mapper;
 
-        public SocialMediaController(ISocialMediaService SocialMediaService, IMapper mapper)
+        public SocialMediasController(ISocialMediaService SocialMediaService, IMapper mapper)
         {
             _SocialMediaService = SocialMediaService;
             _mapper = mapper;

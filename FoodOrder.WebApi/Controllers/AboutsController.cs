@@ -2,20 +2,19 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.AboutDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AboutController : ControllerBase
+    public class AboutsController : ControllerBase
     {
        
       private readonly IAboutService _AboutService;
         private readonly IMapper _mapper;
 
-        public AboutController(IAboutService AboutService, IMapper mapper)
+        public AboutsController(IAboutService AboutService, IMapper mapper)
         {
             _AboutService = AboutService;
             _mapper = mapper;

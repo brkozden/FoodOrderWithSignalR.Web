@@ -1,11 +1,6 @@
 ﻿using FoodOrder.Business.Abstrack;
 using FoodOrder.DataAccess.Abstrack;
 using FoodOrder.EntityLayer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodOrder.Business.Concrete
 {
@@ -18,9 +13,21 @@ namespace FoodOrder.Business.Concrete
             _categoryDal = categoryDal;
         }
 
+      
+
+        public int TActiveCategoryCount()
+        {
+           return _categoryDal.ActiveCategoryCount();
+        }
+
         public void TAdd(Category entity)
         {
             _categoryDal.Add(entity);
+        }
+
+        public int TCategoryCount()
+        {
+           return _categoryDal.CategoryCount();
         }
 
         public void TDelete(Category entity)
@@ -36,6 +43,16 @@ namespace FoodOrder.Business.Concrete
         public Category TGetById(int id)
         {
             return _categoryDal.GetById(id);
+        }
+
+        public string TLastAddedCategoryName()
+        {
+           return _categoryDal.LastAddedCategoryName();
+        }
+
+        public int TPassiveCategoryCount()
+        {
+            return _categoryDal.PassiveCategoryCount();
         }
 
         public void TUpdate(Category entity)

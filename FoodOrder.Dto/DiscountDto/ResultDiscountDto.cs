@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FoodOrder.Dto.DiscountDto
+﻿namespace FoodOrder.Dto.DiscountDto
 {
     public class ResultDiscountDto
     {

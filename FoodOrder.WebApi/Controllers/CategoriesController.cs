@@ -8,12 +8,12 @@ namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _CategoryService;
         private readonly IMapper _mapper;
 
-        public CategoryController(ICategoryService CategoryService, IMapper mapper)
+        public CategoriesController(ICategoryService CategoryService, IMapper mapper)
         {
             _CategoryService = CategoryService;
             _mapper = mapper;
@@ -30,6 +30,34 @@ namespace FoodOrder.WebApi.Controllers
         {
             var value = _CategoryService.TGetById(id);
             return Ok(value);
+
+        }
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+           
+            return Ok(_CategoryService.TCategoryCount());
+
+        }
+        [HttpGet("ActiveCategoryCount")]
+        public IActionResult ActiveCategoryCount()
+        {
+
+            return Ok(_CategoryService.TActiveCategoryCount());
+
+        }
+        [HttpGet("PassiveCategoryCount")]
+        public IActionResult PassiveCategoryCount()
+        {
+
+            return Ok(_CategoryService.TPassiveCategoryCount());
+
+        }
+        [HttpGet("LastAddedCategoryName")]
+        public IActionResult LastAddedCategoryName()
+        {
+
+            return Ok(_CategoryService.TLastAddedCategoryName());
 
         }
         [HttpPost]

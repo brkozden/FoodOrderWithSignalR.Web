@@ -2,19 +2,18 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.ContactDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContactController : ControllerBase
+    public class ContactsController : ControllerBase
     {
         private readonly IContactService _ContactService;
         private readonly IMapper _mapper;
 
-        public ContactController(IContactService ContactService, IMapper mapper)
+        public ContactsController(IContactService ContactService, IMapper mapper)
         {
             _ContactService = ContactService;
             _mapper = mapper;

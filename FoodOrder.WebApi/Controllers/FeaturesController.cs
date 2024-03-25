@@ -2,19 +2,18 @@
 using FoodOrder.Business.Abstrack;
 using FoodOrder.Dto.FeatureDto;
 using FoodOrder.EntityLayer.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FeatureController : ControllerBase
+    public class FeaturesController : ControllerBase
     {
         private readonly IFeatureService _FeatureService;
         private readonly IMapper _mapper;
 
-        public FeatureController(IFeatureService FeatureService, IMapper mapper)
+        public FeaturesController(IFeatureService FeatureService, IMapper mapper)
         {
             _FeatureService = FeatureService;
             _mapper = mapper;

@@ -1,11 +1,6 @@
 ﻿using FoodOrder.Business.Abstrack;
 using FoodOrder.DataAccess.Abstrack;
 using FoodOrder.EntityLayer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodOrder.Business.Concrete
 {
@@ -41,6 +36,36 @@ namespace FoodOrder.Business.Concrete
         public List<Product> TGetProductsWithCategories()
         {
            return _productDal.GetProductsWithCategories();
+        }
+
+        public int TProductCount()
+        {
+            return _productDal.ProductCount();
+        }
+
+        public string TProductNameByMaxPrice()
+        {
+           return _productDal.ProductNameByMaxPrice();
+        }
+
+        public string TProductNameByMinPrice()
+        {
+            return _productDal.ProductNameByMinPrice();
+        }
+
+        public decimal TProductPriceAvg()
+        {
+            return _productDal.ProductPriceAvg();
+        }
+
+        public decimal TProductPriceMax()
+        {
+            return _productDal.ProductPriceMax();
+        }
+
+        public decimal TProductPriceMin()
+        {
+            return _productDal.ProductPriceMin();
         }
 
         public void TUpdate(Product entity)

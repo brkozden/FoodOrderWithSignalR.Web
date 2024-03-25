@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FoodOrder.Dto.AboutDto
+﻿namespace FoodOrder.Dto.AboutDto
 {
     public class GetAboutDto
     {

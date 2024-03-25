@@ -1,4 +1,6 @@
-﻿namespace FoodOrder.EntityLayer.Entities
+﻿using FoodOrder.Entity.Entities;
+
+namespace FoodOrder.EntityLayer.Entities
 {
     public class Product
     {
@@ -16,6 +18,8 @@
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public List<OrderDetail> OrderDetails { get; set; }
 
 
     }

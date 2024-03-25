@@ -1,10 +1,6 @@
-﻿using FoodOrder.EntityLayer.Entities;
+﻿using FoodOrder.Entity.Entities;
+using FoodOrder.EntityLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodOrder.DataAccess.Concrete
 {
@@ -30,6 +26,11 @@ namespace FoodOrder.DataAccess.Concrete
         public DbSet<SocialMedia> SocialMedias { get; set; }
 
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<MoneyCase> MoneyCases { get; set; }
+        public DbSet<RestaurantTable> RestaurantTables { get; set; }
 
 
     }

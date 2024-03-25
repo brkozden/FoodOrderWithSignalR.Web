@@ -8,13 +8,13 @@ namespace FoodOrder.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingController : ControllerBase
+    public class BookingsController : ControllerBase
     {
        
         private readonly IBookingService _BookingService;
         private readonly IMapper _mapper;
 
-        public BookingController(IBookingService BookingService, IMapper mapper)
+        public BookingsController(IBookingService BookingService, IMapper mapper)
         {
             _BookingService = BookingService;
             _mapper = mapper;

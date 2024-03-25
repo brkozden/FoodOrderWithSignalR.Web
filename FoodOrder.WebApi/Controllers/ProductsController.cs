@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.WebApi.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly IProductService _ProductService;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductService ProductService, IMapper mapper)
+        public ProductsController(IProductService ProductService, IMapper mapper)
         {
             _ProductService = ProductService;
             _mapper = mapper;
@@ -32,6 +32,49 @@ namespace FoodOrder.WebApi.Controllers
         {
             var value = _ProductService.TGetById(id);
             return Ok(value);
+
+        }
+        [HttpGet("ProductCount")]
+        public IActionResult ProductCount()
+        {
+
+            return Ok(_ProductService.TProductCount());
+
+        }
+        [HttpGet("ProductPriceMin")]
+        public IActionResult ProductPriceMin()
+        {
+
+            return Ok(_ProductService.TProductPriceMin());
+
+        }
+        [HttpGet("ProductPriceAvg")]
+        public IActionResult ProductPriceAvg()
+        {
+
+            return Ok(_ProductService.TProductPriceAvg());
+
+        }
+        [HttpGet("ProductPriceMax")]
+        public IActionResult ProductPriceMax()
+        {
+
+            return Ok(_ProductService.TProductPriceMax());
+
+        }
+
+        [HttpGet("ProductNameByMinPrice")]
+        public IActionResult ProductNameByMinPrice()
+        {
+
+            return Ok(_ProductService.TProductNameByMinPrice());
+
+        }
+        [HttpGet("ProductNameByMaxPrice")]
+        public IActionResult ProductNameByMaxPrice()
+        {
+
+            return Ok(_ProductService.TProductNameByMaxPrice());
 
         }
         [HttpGet("GetProductsWithCategory")]
@@ -80,7 +123,7 @@ namespace FoodOrder.WebApi.Controllers
                 ImageUrl = updateProductDto.ImageUrl,
                 Description = updateProductDto.Description,
                 Price = updateProductDto.Price,
-                CategoryId= updateProductDto.CategoryId,
+                CategoryId = updateProductDto.CategoryId,
             });
             return Ok("Ürün başarılı bir şekilde güncellendi.");
 
