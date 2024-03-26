@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+@await Component.InvokeAsync("_UILayoutHeaderComponentPartial")
+
+<body class="sub_page">
+    <div class="hero_area">
+        <div class="bg-box">
+            <img src="~/UI/images/hero-bg.jpg" alt="">
+        </div>
+
+        @await Component.InvokeAsync("_UILayoutNavbarComponentPartial")
+
+ 
+  @RenderBody()
+
+
+
+  
+    @await Component.InvokeAsync("_UILayoutFooterComponentPartial")
+
+  
+    @await Component.InvokeAsync("_UILayoutScriptsComponentPartial")
+
+
+</body>
+
+</html>
