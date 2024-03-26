@@ -59,6 +59,10 @@ builder.Services.AddScoped<IOrderDetailDal, EfOrderDetailDal>();
 
 builder.Services.AddScoped<IRestaurantTableService, RestaurantTableManager>();
 builder.Services.AddScoped<IRestaurantTableDal, EfRestaurantTableDal>();
+
+builder.Services.AddScoped<ISliderService, SliderManager>();
+builder.Services.AddScoped<ISliderDal, EfSliderDal>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
