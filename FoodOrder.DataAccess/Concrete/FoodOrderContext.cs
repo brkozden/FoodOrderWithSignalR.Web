@@ -33,6 +33,7 @@ namespace FoodOrder.DataAccess.Concrete
         public DbSet<RestaurantTable> RestaurantTables { get; set; }
         public DbSet<Slider> Sliders { get; set; }
 
+        public DbSet<Basket> Baskets { get; set; }
 
     }
 }

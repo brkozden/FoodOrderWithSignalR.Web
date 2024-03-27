@@ -21,6 +21,9 @@ namespace FoodOrder.EntityLayer.Entities
 
         public List<OrderDetail> OrderDetails { get; set; }
 
+        public List<Basket> Baskets { get; set; }
+
+
 
     }
 }
