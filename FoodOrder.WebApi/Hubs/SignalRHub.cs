@@ -11,15 +11,19 @@ namespace FoodOrder.WebApi.Hubs
         private readonly IOrderService _orderService;
         private readonly IMoneyCaseService _moneyCaseService;
         private readonly IRestaurantTableService _restaurantTableService;
+        private readonly IBookingService _bookingService;
+        private readonly INotificationService _notificationService;
 
 
-        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, IRestaurantTableService restaurantTableService)
+        public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneyCaseService, IRestaurantTableService restaurantTableService, IBookingService bookingService, INotificationService notificationService)
         {
             _categoryService = categoryService;
             _productService = productService;
             _orderService = orderService;
             _moneyCaseService = moneyCaseService;
             _restaurantTableService = restaurantTableService;
+            _bookingService = bookingService;
+            _notificationService = notificationService;
         }
 
         public async Task SendStatistic()
@@ -39,6 +43,7 @@ namespace FoodOrder.WebApi.Hubs
             var restaurantTableCount = _restaurantTableService.TRestaurantTableCount();
             var productPriceMin = _productService.TProductPriceMin();
             var productPriceMax = _productService.TProductPriceMax();
+            var notificationCount = _notificationService.TNotificationCountByStatusFalse();
 
 
             await Clients.All.SendAsync("ReceiveCategoryCount",categoryCount);
@@ -56,7 +61,24 @@ namespace FoodOrder.WebApi.Hubs
             await Clients.All.SendAsync("ReceiveProductPriceMax", Math.Round(productPriceMax, 2) + "₺");
             await Clients.All.SendAsync("ReceiveRestaurantTableCount", restaurantTableCount);
             await Clients.All.SendAsync("ReceiveProductCount", productCount);
+            await Clients.All.SendAsync("ReceiveNotificationCount", notificationCount);
+
         }
-      
+
+        public async Task GetBookingList()
+        {
+            var getBookingList = _bookingService.TGetAll();
+            await Clients.All.SendAsync("ReceiveBookingList", getBookingList);
+
+        }
+        public async Task SendNotification()
+        {
+            var notificationCount = _notificationService.TNotificationCountByStatusFalse();
+            await Clients.All.SendAsync("ReceiveNotificationCountByFalse", notificationCount);
+            var notificationListByFalse = _notificationService.TGetNotificationByFalseLast4();
+            await Clients.All.SendAsync("ReceiveAllNotificationListByFalse", notificationListByFalse);
+
+        }
+
     }
 }
