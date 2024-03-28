@@ -1,10 +1,11 @@
 ﻿using FoodOrder.Entity.Entities;
 using FoodOrder.EntityLayer.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodOrder.DataAccess.Concrete
 {
-    public class FoodOrderContext : DbContext
+    public class FoodOrderContext : IdentityDbContext<AppUser,AppRole,int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

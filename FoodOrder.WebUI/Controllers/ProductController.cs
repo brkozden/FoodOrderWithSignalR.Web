@@ -31,7 +31,7 @@ namespace FoodOrder.WebUI.Controllers
 		public async Task GetCategory()
 		{
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7026/api/Category");
+            var responseMessage = await client.GetAsync("https://localhost:7026/api/Categories");
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
             List<SelectListItem> categoryValue = (from x in values

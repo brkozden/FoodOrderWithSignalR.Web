@@ -35,6 +35,7 @@ namespace FoodOrder.WebUI.Controllers
         public async Task<IActionResult> CreateBooking(CreateBookingDto createBookingDto)
         {
             var client = _httpClientFactory.CreateClient();
+            createBookingDto.Description = "Rezervasyon Alındı";
             var jsonData = JsonConvert.SerializeObject(createBookingDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7026/api/Bookings", stringContent);

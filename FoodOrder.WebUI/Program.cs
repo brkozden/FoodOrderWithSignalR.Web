@@ -1,6 +1,11 @@
+using FoodOrder.DataAccess.Concrete;
+using FoodOrder.Entity.Entities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<FoodOrderContext>();
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<FoodOrderContext>();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
