@@ -79,6 +79,26 @@ namespace FoodOrder.WebApi.Hubs
             await Clients.All.SendAsync("ReceiveAllNotificationListByFalse", notificationListByFalse);
 
         }
+        public async Task GetRestaurantTableStatus()
+        {
+            var restaruantTableStatus = _restaurantTableService.TGetAll();
+            await Clients.All.SendAsync("ReceiveRestaurantTableStatus", restaruantTableStatus);
+           
+
+        }
+        public static int clientCount { get; set; } = 0;
+        public override async Task OnConnectedAsync()
+        {
+            clientCount++;
+            await Clients.All.SendAsync("ReceiveClientCount", clientCount);
+            await base.OnConnectedAsync();
+        }
+        public override async Task OnDisconnectedAsync(Exception? exception)
+        {
+            clientCount--;
+            await Clients.All.SendAsync("ReceiveClientCount", clientCount);
+            await base.OnDisconnectedAsync(exception);
+        }
 
     }
 }

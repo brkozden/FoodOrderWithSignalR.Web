@@ -1,4 +1,14 @@
-﻿<div class="sidebar">
+﻿
+<style>
+    .sidebar li .submenu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }</style>
+
+<div class="sidebar">
     <div class="scrollbar-inner sidebar-wrapper">
         <div class="user">
             <div class="photo">
@@ -36,12 +46,54 @@
                 </div>
             </div>
         </div>
+
         <ul class="nav">
+            <div class="nav-item">
+                <a>
+                    <i class="la la-tripadvisor"></i>
+                    <p>Anlık Client Sayısı: <strong id="clientcountvalue"></strong></p>
+                </a>
+            </div>
             <li class="nav-item">
                 <a href="/Dashboard/Index">
                     <i class="la la-dashboard"></i>
                     <p>Dashboard</p>
                 </a>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link" href="#">   <i class="la la-home"></i> Anasayfa İşlemleri  </a>
+                <ul class="submenu collapse">
+                    <li class="nav-item">
+                        <a href="/About/Index/">
+                            <i class="la la-edit"></i>
+                            <p>Hakkımda Bilgisi</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Testimonial/Index/">
+                            <i class="la la-paperclip"></i>
+                            <p>Referanslar</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Contact/Index/">
+                            <i class="la la-paper-plane"></i>
+                            <p>İletişim Bilgisi</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Discount/Index/">
+                            <i class="la la-diamond"></i>
+                            <p>Günün İndirimleri</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Feature/Index/">
+                            <i class="la la-crosshairs"></i>
+                            <p>Öne Çıkanlar</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a href="/Statistics/Index">
@@ -67,43 +119,77 @@
                     <p>Rezervasyonlar</p>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a href="/About/Index/">
-                    <i class="la la-edit"></i>
-                    <p>Hakkımda Bilgisi</p>
+                <a href="/RestaurantTable/Index/">
+                    <i class="la la-table"></i>
+                    <p>Masalar</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/Contact/Index/">
-                    <i class="la la-paper-plane"></i>
-                    <p>İletişim Bilgisi</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/Discount/Index/">
-                    <i class="la la-diamond"></i>
-                    <p>Günün İndirimleri</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/Feature/Index/">
-                    <i class="la la-crosshairs"></i>
-                    <p>Öne Çıkanlar</p>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a href="/SocialMedia/Index/">
                     <i class="la la-globe"></i>
                     <p>Sosyal Medya</p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/Testimonial/Index/">
-                    <i class="la la-paperclip"></i>
-                    <p>Referanslar</p>
-                </a>
-            </li>
-        
+
+
         </ul>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.sidebar .nav-link').forEach(function (element) {
+
+            element.addEventListener('click', function (e) {
+
+                let nextEl = element.nextElementSibling;
+                let parentEl = element.parentElement;
+
+                if (nextEl) {
+                    e.preventDefault();
+                    let mycollapse = new bootstrap.Collapse(nextEl);
+
+                    if (nextEl.classList.contains('show')) {
+                        mycollapse.hide();
+                    } else {
+                        mycollapse.show();
+
+                        var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+
+                        if (opened_submenu) {
+                            new bootstrap.Collapse(opened_submenu);
+                        }
+                    }
+                }
+            });
+        })
+    });
+</script>
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(() => {
+
+        var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7026/SignalRHub").build();
+        $("#connstatus").text(connection.state);
+        connection.start().then(() => {
+            $("#connstatus").text(connection.state);
+
+        }).catch((err) => { console.log(err) });
+
+
+        connection.on("ReceiveClientCount", (clientCount) => {
+            $("#clientcountvalue").text(clientCount)
+        });
+    });
+
+</script>
