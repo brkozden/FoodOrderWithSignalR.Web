@@ -44,8 +44,9 @@ namespace FoodOrder.WebApi.Controllers
                 Date = createBookingDto.Date,
                 Mail = createBookingDto.Mail,
                 Name = createBookingDto.Name,
+                Description = "Rezervasyon Alındı",
             });
-            return Ok("Kategori başarılı bir şekilde eklendi.");
+            return Ok("Rezervasyon başarılı bir şekilde eklendi.");
 
         }
         [HttpPut]
@@ -61,7 +62,7 @@ namespace FoodOrder.WebApi.Controllers
                 Mail = updateBookingDto.Mail,
                 Name = updateBookingDto.Name,
             });
-            return Ok("Kategori başarılı bir şekilde güncellendi.");
+            return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
 
         }
         [HttpDelete("{id}")]
@@ -69,8 +70,20 @@ namespace FoodOrder.WebApi.Controllers
         {
             var value = _BookingService.TGetById(id);
             _BookingService.TDelete(value);
-            return Ok("Kategori başarılı bir şekilde silindi.");
+            return Ok("Rezervasyon başarılı bir şekilde silindi.");
 
         }
-    }
+        [HttpGet("BookingStatusApproved/{id}")]
+        public IActionResult BookingStatusApproved(int id)
+        {
+            _BookingService.TBookingStatusApproved(id);
+            return Ok("Rezervasyon Onaylandı");
+        }
+		[HttpGet("BookingStatusCancelled/{id}")]
+		public IActionResult BookingStatusCancelled(int id)
+		{
+			_BookingService.TBookingStatusCancelled(id);
+			return Ok("Rezervasyon İptal Edildi");
+		}
+	}
 }
