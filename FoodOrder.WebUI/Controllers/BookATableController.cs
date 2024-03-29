@@ -1,10 +1,12 @@
 ﻿using FoodOrder.WebUI.Dtos.BookingDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace FoodOrder.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class BookATableController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

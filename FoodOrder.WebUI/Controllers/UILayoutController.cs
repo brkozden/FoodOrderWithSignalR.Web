@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebUI.Controllers
 {
-	public class UILayoutController : Controller
+    [AllowAnonymous]
+    public class UILayoutController : Controller
 	{
 		public IActionResult Index()
 		{

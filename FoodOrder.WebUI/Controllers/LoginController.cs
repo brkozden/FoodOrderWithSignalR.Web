@@ -1,10 +1,12 @@
 ﻿using FoodOrder.Entity.Entities;
 using FoodOrder.WebUI.Dtos.IdentityDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodOrder.WebUI.Controllers
 {
+	[AllowAnonymous]
 	public class LoginController : Controller
 	{
 		private readonly SignInManager<AppUser> _signInManager;

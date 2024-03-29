@@ -256,7 +256,7 @@ a:focus {
   }
 
   .order_online {
-    @include hero_btn($primary1, $white, 8px, 30px, 45px);
+    @include hero_btn($primary1, $$black, 8px, 30px, 45px);
   }
 }
 
@@ -323,7 +323,7 @@ a:focus {
   display: flex;
   align-items: center;
   position: relative;
-  padding: 45px 0 75px 0;
+  padding: 145px 0 75px 0;
 
   .row {
     align-items: center;

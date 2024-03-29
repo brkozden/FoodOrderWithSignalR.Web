@@ -3,7 +3,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
     decimal basketTotalPrice = 0;
-    decimal basketTotalPriceWithTax = 18;
+    decimal basketTotalPriceWithTax = 0;
 }
 
 </div>
@@ -37,7 +37,9 @@
                 </div>
                     </div>
                 </div>
-                basketTotalPriceWithTax = basketTotalPrice*108/100;
+            
+                 basketTotalPriceWithTax = basketTotalPrice * 108 / 100; 
+                
             }
 
            

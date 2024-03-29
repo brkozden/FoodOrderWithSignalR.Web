@@ -1,14 +1,24 @@
 using FoodOrder.DataAccess.Concrete;
 using FoodOrder.Entity.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var requireAuthorizePolicy= new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 // Add services to the container.
 builder.Services.AddDbContext<FoodOrderContext>();
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<FoodOrderContext>();
 builder.Services.AddHttpClient();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(opt =>
+{
+    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+});
 
+builder.Services.ConfigureApplicationCookie(opts =>
+{
+    opts.LoginPath = "/Login/Index/";
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,7 +33,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

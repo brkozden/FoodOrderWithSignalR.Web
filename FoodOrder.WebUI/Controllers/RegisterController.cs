@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using FoodOrder.Entity.Entities;
 using FoodOrder.WebUI.Dtos.IdentityDtos;
+using Microsoft.AspNetCore.Authorization;
 namespace FoodOrder.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

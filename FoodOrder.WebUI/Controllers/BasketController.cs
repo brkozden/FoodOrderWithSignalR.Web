@@ -1,10 +1,12 @@
 ﻿using FoodOrder.WebUI.Dtos.BasketDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace FoodOrder.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class BasketController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
