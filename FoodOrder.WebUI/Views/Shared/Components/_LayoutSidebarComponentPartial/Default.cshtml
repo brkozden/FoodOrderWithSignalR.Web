@@ -50,14 +50,9 @@
                     <p>Anlık Client Sayısı: <strong id="clientcountvalue"></strong></p>
                 </a>
             </div>
-            <li class="nav-item">
-                <a href="/RestaurantTable/TableListByStatus">
-                    <i class=" la la-delicious"></i>
-                    <p>Anlık Masa Durumu</p>
-                </a>
-            </li>
+           
             <li class="nav-item has-submenu">
-                <a class="nav-link" href="#">   <i class="la la-home"></i> Anasayfa İşlemleri  </a>
+                <a class="nav-link" href="#">   <i class="la la-home"></i> Anasayfa İşlemleri  <span class="la la-angle-down ml-3"></span></a>
                 <ul class="submenu collapse">
                     <li class="nav-item">
                         <a href="/About/Index/">
@@ -89,6 +84,12 @@
                             <p>Öne Çıkanlar</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/SocialMedia/Index/">
+                            <i class="la la-globe"></i>
+                            <p>Sosyal Medya</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -110,7 +111,26 @@
                 </a>
             </li>
             <li class="nav-item has-submenu">
-                <a class="nav-link" href="#">   <i class="la la-phone"></i> Rezervasyonlar  </a>
+                <a class="nav-link" href="#">
+                    <i class="la la-phone"></i> Masalar  <span class="la la-angle-down ml-3"></span>
+                </a>
+                <ul class="submenu collapse">
+                    <li class="nav-item">
+                        <a href="/RestaurantTable/TableListByStatus">
+                            <i class=" la la-delicious"></i>
+                            <p>Anlık Masa Durumu</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/RestaurantTable/Index/">
+                            <i class="la la-table"></i>
+                            <p>Masalar</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link" href="#">   <i class="la la-phone"></i> Rezervasyonlar  <span class="la la-angle-down ml-3"></span></a>
                 <ul class="submenu collapse">
                     <li class="nav-item">
                         <a href="/Booking/Index/">
@@ -118,17 +138,17 @@
                             <p>Rezervasyonlar</p>
                         </a>
                     </li>
-                
+                    <li class="nav-item">
+                        <a href="/Mail/Index/">
+                            <i class="la la-envelope-o"></i>
+                            <p>Mail Gönder</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
-          
 
-            <li class="nav-item">
-                <a href="/RestaurantTable/Index/">
-                    <i class="la la-table"></i>
-                    <p>Masalar</p>
-                </a>
-            </li>
+
+           
            
             <li class="nav-item">
                 <a href="/Contact/Index/">
@@ -136,13 +156,13 @@
                     <p>İletişim</p>
                 </a>
             </li>
+          
             <li class="nav-item">
-                <a href="/SocialMedia/Index/">
-                    <i class="la la-globe"></i>
-                    <p>Sosyal Medya</p>
+                <a href="/Login/LogOut/">
+                    <i class="la la-sign-out"></i>
+                    <p>Çıkış Yap</p>
                 </a>
             </li>
-
 
         </ul>
     </div>
