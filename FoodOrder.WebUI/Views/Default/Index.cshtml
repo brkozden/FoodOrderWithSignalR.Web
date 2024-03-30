@@ -2,8 +2,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/Index.cshtml";
 }
-
+<div class="hero_area">
+    <div class="bg-box" style="height:90vh !important">
+        <img src="~/UI/images/hero-bg.jpg" alt="">
+    </div>
 @await Component.InvokeAsync("_DefaultSliderComponentPartial")
+
+</div>
 
 
 @await Component.InvokeAsync("_DefaultOfferComponentPartial")

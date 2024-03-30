@@ -39,7 +39,7 @@ namespace FoodOrder.WebUI.Controllers
                 user.UserName = userEditDto.Username;
                 user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, userEditDto.Password);
                  await _userManager.UpdateAsync(user);
-                return RedirectToAction("Index","Login");
+                return RedirectToAction("LogOut","Login");
             }
            return NoContent();
         }

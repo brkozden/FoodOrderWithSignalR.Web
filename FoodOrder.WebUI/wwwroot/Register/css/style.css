@@ -4,6 +4,9 @@ body {
 .page-content {
 	width: 100%;
 	margin:  0 auto;
+	background-image: -moz-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
+    background-image: -webkit-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
+    background-image: -ms-linear-gradient( 136deg, rgb(0,0,70) 0%, rgb(28,181,224) 100%);
 	display: flex;
 	display: -webkit-flex;
 	justify-content: center;
@@ -25,7 +28,7 @@ body {
 	-ms-border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
-	margin: 95px 0;
+	margin: 180px 0;
 	font-family: 'Nunito', sans-serif;
 	color: #fff;
 	font-weight: 700;
