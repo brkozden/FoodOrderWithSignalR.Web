@@ -1,4 +1,5 @@
 ﻿using FoodOrder.WebUI.Dtos.CategoryDtos;
+using FoodOrder.WebUI.Dtos.NotificationDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -86,6 +87,8 @@ namespace FoodOrder.WebUI.Controllers
             var responseMessage = await client.PutAsync("https://localhost:7026/api/Categories/", content);
             if (responseMessage.IsSuccessStatusCode)
             {
+               
+
                 return RedirectToAction("Index");
 
             }

@@ -1,4 +1,5 @@
 ﻿using FoodOrder.WebUI.Dtos.BookingDtos;
+using FoodOrder.WebUI.Dtos.NotificationDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -41,9 +42,30 @@ namespace FoodOrder.WebUI.Controllers
 			var responseMessage = await client.PostAsync("https://localhost:7026/api/Bookings", stringContent);
 			if (responseMessage.IsSuccessStatusCode)
 			{
-				return RedirectToAction("Index");
+                CreateNotificationDto createNotificationDto = new()
+                {
+                    Date = DateTime.Now,
+                    Description = "Bir Yeni Rezervasyonunuz Var",
+                    Icon = "la la-cutlery",
+                    Status = false,
+                    Type = "notif-icon notif-success",
 
-			}
+
+
+                };
+                var notificationClient = _httpClientFactory.CreateClient();
+
+                var createNotification = JsonConvert.SerializeObject(createNotificationDto);
+                StringContent content = new StringContent(createNotification, Encoding.UTF8, "application/json");
+                var responseNotificationMessage = await notificationClient.PostAsync("https://localhost:7026/api/Notifications", content);
+                if (responseNotificationMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+
+                }
+                return View();
+
+            }
 
 			return View();
 		}
@@ -81,11 +103,12 @@ namespace FoodOrder.WebUI.Controllers
 		public async Task<IActionResult> UpdateBooking(UpdateBookingDto updateBookingDto)
 		{
 			var client = _httpClientFactory.CreateClient();
+			updateBookingDto.Description = "Rezervasyon Alındı";
 			var jsonData = JsonConvert.SerializeObject(updateBookingDto);
 			StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 			var responseMessage = await client.PutAsync("https://localhost:7026/api/Bookings/", content);
 			if (responseMessage.IsSuccessStatusCode)
-			{
+            {
 				return RedirectToAction("Index");
 
 			}

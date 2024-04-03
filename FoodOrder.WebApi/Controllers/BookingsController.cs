@@ -61,6 +61,7 @@ namespace FoodOrder.WebApi.Controllers
                 Date = updateBookingDto.Date,
                 Mail = updateBookingDto.Mail,
                 Name = updateBookingDto.Name,
+                Description = updateBookingDto.Description,
             });
             return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
 
